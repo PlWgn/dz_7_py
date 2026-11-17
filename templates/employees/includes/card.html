@@ -1,0 +1,10 @@
+<div class="card">
+    {% with photo=employee.photos.all|first %}
+    {% if photo %}
+    <img src="{{ photo.image.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}" width="100">
+    {% endif %}
+    {% endwith %}
+    <h3><a href="{% url 'employee_detail' employee.pk %}">{{ employee.first_name }} {{ employee.last_name }}</a></h3>
+    <p>Навыки: {{ employee.skills.all|join:', '|default:'нет' }}</p>
+    <p>Стаж в компании: {{ employee.experience_days }} дн.</p>
+</div>

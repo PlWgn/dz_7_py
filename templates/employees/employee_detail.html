@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Офис: {{ employee.first_name }} {{ employee.last_name }}{% endblock %}
+
+{% block content %}
+{% if main_photo %}
+<img src="{{ main_photo.image.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}" width="250">
+{% endif %}
+<h1>{{ employee.first_name }} {{ employee.last_name }}</h1>
+<p>Пол: {{ employee.get_gender_display|default:'не указан' }}</p>
+<p>Стаж в компании: {{ employee.experience_days }} дн.</p>
+<p>Номер стола: {{ employee.workplace.desk_number|default:'не назначен' }}</p>
+<h2>Навыки</h2>
+<ul>
+    {% for employee_skill in employee.employee_skills.all %}
+    <li>{{ employee_skill.skill }}: {{ employee_skill.level }} из 10</li>
+    {% empty %}
+    <li>Навыки не указаны</li>
+    {% endfor %}
+</ul>
+{% if gallery %}
+<h2>Галерея</h2>
+{% for photo in gallery %}
+<img src="{{ photo.image.url }}" alt="Фото {{ forloop.counter }}" width="150">
+{% endfor %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 10px;
+}
+
+nav a, nav span, nav form {
+    margin-right: 10px;
+}
+
+.inline {
+    display: inline;
+}
+
+.card {
+    border-bottom: 1px solid gray;
+}
+
+.error {
+    color: red;
+}

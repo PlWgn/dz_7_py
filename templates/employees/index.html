@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Офис: главная{% endblock %}
+
+{% block content %}
+<h1>Офис</h1>
+<p>Проект для учета сотрудников компании и их рабочих мест. Здесь можно посмотреть, кто работает в компании и какими навыками владеет.</p>
+<p>Всего сотрудников: {{ employees_count }}</p>
+<h2>Недавно в команде</h2>
+{% for employee in employees %}
+{% include 'employees/includes/card.html' %}
+{% empty %}
+<p>Сотрудников пока нет.</p>
+{% endfor %}
+{% endblock %}
